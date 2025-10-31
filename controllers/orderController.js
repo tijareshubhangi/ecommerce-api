@@ -81,7 +81,13 @@ export const checkout = async (req, res, next) => {
       }
     }, 15 * 60 * 1000);
 
-    res.status(201).json({ message: 'Order created (PENDING_PAYMENT)', orderId: orderDoc._id });
+res.status(201).json({
+  _id: orderDoc._id,
+  userId: orderDoc.userId,
+  status: orderDoc.status,
+  totalAmount: orderDoc.totalAmount
+});
+
   } catch (err) {
     await session.abortTransaction();
     session.endSession();

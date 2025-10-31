@@ -34,7 +34,7 @@ export const addOrUpdateItem = async (req, res, next) => {
   }
 };
 
-exports.removeItem = async (req, res, next) => {
+export const removeItem = async (req, res, next) => {
   try {
     const productId = req.params.productId;
     const cart = await Cart.findOne({ userId: req.user._id });
